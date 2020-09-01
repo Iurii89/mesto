@@ -1,0 +1,22 @@
+.element__like {
+    background-image: url(../../../images/element_heart.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 21px;
+    height: 18px;
+    border: none;
+}
+
+@media screen and (max-width: 950px) {
+    .element__like {
+        width: 2.21vw;
+        height: 1.9vw;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .element__like {
+        width: 6.56vw;
+        height: 5.625vw;
+    }
+}
