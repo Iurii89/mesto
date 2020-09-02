@@ -1,7 +1,4 @@
-.popup__job {
-    ont-family: Inter;
-    font-style: normal;
-    font-weight: normal;
+.popup__input {
     border: 0;
     width: 100%;
     box-sizing: border-box;
@@ -14,8 +11,8 @@
 }
 
 @media screen and (max-width: 550px) {
-    .popup__job {
-        margin-top: 5.454vw;
+    .popup__input {
+        margin-top: 5.5vw;
         padding-bottom: 2.36vw;
         }
-    }
+}

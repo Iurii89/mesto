@@ -21,3 +21,4 @@
 Данный проект будет дорабатываться, по мере открытия новых этапов обучения
 
 * [Ссылка на этот проект в Github](https://iurii89.github.io/mesto/)
+* GH-pages - https://iurii89.github.io/mesto/

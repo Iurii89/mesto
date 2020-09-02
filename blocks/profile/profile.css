@@ -4,6 +4,7 @@
     width: 100%;
     display: flex;
     max-width: 882px;
+    align-items: center;
 }
 
 @media screen and (max-width: 950px) {

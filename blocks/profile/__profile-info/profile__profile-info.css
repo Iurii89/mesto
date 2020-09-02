@@ -3,13 +3,13 @@
     grid-template-columns: max-content max-content;
     color: #ffffff;
     max-width: 336px;
-    margin: 18px 0 25px 26.25px;
+    margin-left: 26.25px;
     padding: 0;
 }
 
 @media screen and (max-width: 950px) {
     .profile__profile-info {
-        margin: 1.894vw 0 2.63vw 2.76vw;
+        margin-left: 2.76vw;
         width: 35.368vw;
     }
 }
