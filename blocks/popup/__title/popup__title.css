@@ -10,7 +10,8 @@
 
 @media screen and (max-width: 550px) {
     .popup__title {
-        font-size: 4.36vw;
-        line-height: 5.27vw;
+        font-size: 5.625vw;
+        line-height: 6.875vw;
+        margin-bottom: 11.25vw;
         }
     }

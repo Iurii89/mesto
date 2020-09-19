@@ -160,7 +160,7 @@ const likeListeners = () => {
 likeListeners()
 
 
-//Открытие изображений
+
 const popupImage = document.querySelector('.popup_image-block') //попап с изображением
 const popupImageCloseButton = document.querySelector('.popup__close-image-button') //Кнопка закрытия изображения
 const popupImageLinkAndAlt = document.querySelector('.popup__image');

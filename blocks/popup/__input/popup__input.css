@@ -12,7 +12,9 @@
 
 @media screen and (max-width: 550px) {
     .popup__input {
-        margin-top: 5.5vw;
-        padding-bottom: 2.36vw;
+        margin-top: 6.25vw;
+        padding-bottom: 3.75vw;
+        font-size: 3.75vw;
+        line-height: 4.69vw;
         }
 }

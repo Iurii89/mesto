@@ -27,5 +27,10 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__save/popup__save.css);
 @import url(../blocks/popup/_is-opened/popup_is-opened.css);
+@import url(../blocks/element/__delete/element__delete.css);
+@import url(../blocks/element/_like-actie/element_like-active.css);
+@import url(../blocks/popup/__container-image/popup__container-image.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__image-text/popup__image-text.css);
 @import url(../blocks/body/body.css);
 

@@ -18,9 +18,11 @@
 
 @media screen and (max-width: 550px) {
     .popup__save {
-        max-width: 65.09vw;
-        min-width: 65.09vw;
-        min-height: 9.09vw;
-        margin: 8.73vw auto 6.55vw;
+        max-width: 62.5vw;
+        min-width: 62.5vw;
+        min-height: 12.5vw;
+        margin: 9.5vw auto 0;
+        font-size: 4.375vw;
+        line-height: 5.3125vw;
         }
     }

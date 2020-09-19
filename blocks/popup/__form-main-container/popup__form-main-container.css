@@ -9,7 +9,7 @@
 
 @media screen and (max-width: 550px) {
     .popup__form-main-container {
-        margin: 6.2vw auto 0 6.6vw;
-        max-width: 65.1vw;
+        margin: 9.375vw auto;
+        max-width: 62.5vw;
         }
     }
