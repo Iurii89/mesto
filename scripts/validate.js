@@ -1,7 +1,7 @@
 // показать ошибку
 const showInputError = (parameters, formElement, errorMessage, inputElement) => {
-    parameters.errorClass
-    parameters.inputErrorClass
+    parameters.errorClass;
+    parameters.inputErrorClass;
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(parameters.errorClass);
@@ -9,38 +9,38 @@ const showInputError = (parameters, formElement, errorMessage, inputElement) => 
 
 // спрятать ошибку
 const hideInputError = (parameters, formElement, inputElement) => {
-    parameters.errorClass
+    parameters.errorClass;
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     errorElement.textContent = "";
     errorElement.classList.remove(parameters.errorClass);
-}
+};
 
 // проверка на валидность
 const isValid = (parameters, formElement, inputElement) => {
     const isInputNotValid = !inputElement.validity.valid;
     if (isInputNotValid) {
-        const errorMessage = inputElement.validationMessage
+        const errorMessage = inputElement.validationMessage;
         showInputError(parameters, formElement, errorMessage, inputElement);
     } else {
         hideInputError(parameters, formElement, inputElement);
-    }
-}
+    };
+};
 
 // отключение/подключение кнопки "Сохранить"
 const toggleButton = (parameters, inputList, buttonElement) => {
-    parameters.inactiveButtonClass
+    parameters.inactiveButtonClass;
     const hasInvalidInput = inputList.some((inputElement) => !inputElement.validity.valid);
     if (hasInvalidInput) {
         buttonElement.classList.add(parameters.inactiveButtonClass);
     } else {
         buttonElement.classList.remove(parameters.inactiveButtonClass);
-    }
-}
+    };
+};
 
 // перебор всех инпутов
 const setEventListeners = (parameters, formElement) => {
-    parameters.inputSelector
-    parameters.submitButtonSelector
+    parameters.submitButtonSelector;
+    parameters.inputSelector;
     const inputList = Array.from(formElement.querySelectorAll(parameters.inputSelector));
     const buttonElement = formElement.querySelector(parameters.submitButtonSelector);
     inputList.forEach((inputElement) => {
@@ -50,11 +50,11 @@ const setEventListeners = (parameters, formElement) => {
         });
     });
     toggleButton(parameters, inputList, buttonElement);
-}
+};
 
 // перебор всех форм
 function enableValidation(parameters) {
-    parameters.formSelector
+    parameters.formSelector;
     const formList = Array.from(document.querySelectorAll(parameters.formSelector))
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', (evt) => {
@@ -62,7 +62,7 @@ function enableValidation(parameters) {
         })
         setEventListeners(parameters, formElement);
     });
-}
+};
 
 // включение валидации вызовом enableValidation
 enableValidation({
