@@ -1,6 +1,7 @@
 //Открытие попапов
 const openPopup = (popup) => {
     popup.classList.add('popup_is-opened');
+    exitOnEcs();
 }
 //Закрытие попапов
 const closePopup = (popup) => {
@@ -12,7 +13,6 @@ const openEditPopup = () => {
     openPopup(popupEditProfile); //Открытие
     nameInput.value = profileName.textContent;//Дублирование текста в попапе (имя)
     jobInput.value = profileJob.textContent;//Дублирование текста в попапе (профессия)
-    exitOnEcs();
 };
 
 //функция отправки формы
@@ -55,8 +55,11 @@ function openPopupImage (event) {
     popupImageLinkAndAlt.alt = img.alt;
     popupImageText.textContent = txt.textContent;
     openPopup(popupImage);
-    exitOnEcs();
 };
+
+// Слушатель закрытия попапа по кнопке
+popupImageCloseButton.addEventListener('click', closePopupImage);
+
 
 //Закрытие попапа картинки
 function closePopupImage () {
@@ -71,7 +74,6 @@ const addListener = (card) => {
     card.querySelector('.element__like').addEventListener('click', likeIt);
 
     card.querySelector('.element__image').addEventListener('click', openPopupImage);
-    popupImageCloseButton.addEventListener('click', closePopupImage);
 };
 
 
@@ -105,7 +107,6 @@ const openAddCardPopup = () => {
     openPopup(popupAddCard); //Не передавать на сервер
     inputnameAddCardPopup.reset; //Очистка инпута имени
     inputlinkiAddCard.reset; //Очистка инпута ссылки
-    exitOnEcs();
 };
 // Слушатель открытия попапа добавления карточек
 addCardPopupOpenButton.addEventListener('click', openAddCardPopup);
@@ -139,10 +140,16 @@ popupAddCard.addEventListener('click', closePopupByOverlay);
 popupImage.addEventListener('click', closePopupByOverlay);
 
 
-// Закрытие попапов по кнопке Esc
-const exitOnEcs = () => {
-document.addEventListener('keydown', function(evt) {
+// Функция закрытия попапов по кнопке Esc
+const exitOnEscInnerListener = (evt) => {
     if (evt.key === 'Escape') {
         const popup = document.querySelector('.popup_is-opened');
         closePopup(popup);
-}})};
+        document.removeEventListener('keydown', exitOnEscInnerListener);
+    };
+};
+
+// Вызываем слушателя закрытия попапов по кнопке Esc
+const exitOnEcs = () => {
+    document.addEventListener('keydown', exitOnEscInnerListener)
+};
