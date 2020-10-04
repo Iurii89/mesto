@@ -6,6 +6,7 @@ const openPopup = (popup) => {
 //Закрытие попапов
 const closePopup = (popup) => {
     popup.classList.remove('popup_is-opened');
+    document.removeEventListener('keydown', exitOnEscInnerListener);
 }
 
 //Открытие попап редактирования профиля
@@ -145,7 +146,6 @@ const exitOnEscInnerListener = (evt) => {
     if (evt.key === 'Escape') {
         const popup = document.querySelector('.popup_is-opened');
         closePopup(popup);
-        document.removeEventListener('keydown', exitOnEscInnerListener);
     };
 };
 
