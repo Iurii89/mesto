@@ -43,7 +43,7 @@
         <section class="popup popup_edit-profile">
             <div class="popup__container">
                 <button class="popup__close-button popup__close-edit-button" type="button"></button>
-                <form action="#" class="popup__form" name="popup-form" novalidate>
+                <form action="#" class="popup__form popup__form_edit-profile" name="popup-form" novalidate>
                     <fieldset class="popup__form-main-container">
                         <h2 class="popup__title">Редактировать профиль</h2>
                         <input type="text" class="popup__input" name="popup-form-name-profile" id="profile-input-name" minlength="2" maxlength="40" required>
@@ -60,10 +60,10 @@
         <section class="popup popup_add-card">
             <div class="popup__container">
                 <button class="popup__close-button popup__close-button_add-card" type="button"></button>
-                <form action="#" class="popup__form" name="popup-form" novalidate>
+                <form action="#" class="popup__form popup__form_add-card" name="popup-form" novalidate>
                     <fieldset class="popup__form-main-container">
                         <h2 class="popup__title">Новое место</h2>
-                        <input type="text" placeholder="Название" class="popup__input" name="popup-form-name-add-card" id="add-card-input-name" minlength="2" maxlength="30" required>
+                        <input type="text" placeholder="Название" class="popup__input popup__input_add-card" name="popup-form-name-add-card" id="add-card-input-name" minlength="2" maxlength="30" required>
                         <span class="popup__input-error" id="add-card-input-name-error"></span>
                         <input type="url" placeholder="Ссылка на картинку" class="popup__input" name="popup-form-url-add-card" id="add-card-input-url" required>
                         <span class="popup__input-error" id="add-card-input-url-error"></span>
@@ -96,9 +96,7 @@
         </div>
     </template>
 
-    <script src="./scripts/validate.js" defer></script>
-    <script src="./scripts/constants.js" defer></script>
-    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/index.js" type="module" defer></script>
 
 </body>
 </html>
