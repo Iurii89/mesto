@@ -1,4 +1,4 @@
-import {initialCards, popupEditProfile, nameInput, jobInput, profileName, profileJob, popupOpenButton, popupCloseButton, formElement, formElementAddCard, popupAddCard, inputnameAddCardPopup, inputlinkiAddCard, addCardPopupOpenButton, addCardPopupcloseButton, popupImageCloseButton, popupImage, configValid} from './constants.js';
+import {initialCards, popupEditProfile, cards, popupAddCardButtonSave, nameInput, jobInput, profileName, profileJob, popupOpenButton, popupCloseButton, formElement, formElementAddCard, popupAddCard, inputnameAddCardPopup, inputlinkiAddCard, addCardPopupOpenButton, addCardPopupcloseButton, popupImageCloseButton, popupImage, configValid} from './constants.js';
 import Card from './card.js';
 import FormValidator from './formValidator.js';
 
@@ -6,7 +6,7 @@ import FormValidator from './formValidator.js';
 //Открытие попапов
 const openPopup = (popup) => {
     popup.classList.add('popup_is-opened');
-    exitOnEcs();
+    document.addEventListener('keydown', exitOnEscInnerListener);
 };
 
 
@@ -20,6 +20,7 @@ const closePopup = (popup) => {
 //Открытие попап редактирования профиля
 const openEditPopup = () => {
     openPopup(popupEditProfile); //Открытие
+    
     nameInput.value = profileName.textContent;//Дублирование текста в попапе (имя)
     jobInput.value = profileJob.textContent;//Дублирование текста в попапе (профессия)
 };
@@ -28,8 +29,10 @@ const openEditPopup = () => {
 //функция отправки формы
 function formSubmitHandler (evt) { //Работа с формой
     evt.preventDefault() //Не передавать на сервер
+    
     profileName.textContent = nameInput.value; //Поменять имя на странице
     profileJob.textContent = jobInput.value; //Поменять профессию на странице
+    
     closePopup(popupEditProfile) //закрыть попап по кнопке "Сохранить"
 }
 
@@ -37,14 +40,20 @@ function formSubmitHandler (evt) { //Работа с формой
 //Функция открытия/закрытия попапа добавления карточки
 const openAddCardPopup = () => {
     formElementAddCard.reset();
+    disablePopupAddCardButtonSave();
     openPopup(popupAddCard);
 };
-
+// Отключение кнопки "Создать" попапа добавления новой карточки
+const disablePopupAddCardButtonSave = () => {
+    popupAddCardButtonSave.classList.add(configValid.inactiveButtonClass);
+    popupAddCardButtonSave.setAttribute('disabled', true);
+};
 
 // Закрыть попап по Overlay
 const closePopupByOverlay = (evt) => {
     if (evt.target == evt.currentTarget) {
         const popup = document.querySelector('.popup_is-opened');
+        
         closePopup(popup);
     }
 };
@@ -54,27 +63,35 @@ const closePopupByOverlay = (evt) => {
 const exitOnEscInnerListener = (evt) => {
     if (evt.key === 'Escape') {
         const popup = document.querySelector('.popup_is-opened');
+        
         closePopup(popup);
     };
 };
 
+// Добавление карточки на страницу(контейнер)
+const addCardToContainer = (element) => {
+    cards.prepend(element);
+};
 
 // вызываем по умолчанию 6 карточек
 initialCards.forEach((initialCardsElement) => {
-    const card = new Card(initialCardsElement, '.template', openPopup);
-    card.getCard();
+    const cardDefault = new Card(initialCardsElement, '.template', openPopup);
+    
+    addCardToContainer(cardDefault.getCard());
 });
 
 
 // Добавляем новую карточку 
 function formAddCardSubmit (evt) {
     evt.preventDefault();
+    
     const newCard = {
         name: inputnameAddCardPopup.value,
         link: inputlinkiAddCard.value,
     };
-    const card = new Card(newCard, '.template', openPopup);
-    card.getCard();
+    const cardAdd = new Card(newCard, '.template', openPopup);
+    
+    addCardToContainer(cardAdd.getCard());
     closePopup(popupAddCard);
 }
 
@@ -105,9 +122,5 @@ popupImageCloseButton.addEventListener('click', () => closePopup(popupImage));
 popupEditProfile.addEventListener('click', closePopupByOverlay);
 popupAddCard.addEventListener('click', closePopupByOverlay);
 popupImage.addEventListener('click', closePopupByOverlay);
-// Вызываем слушателя закрытия попапов по кнопке Esc
-const exitOnEcs = () => {
-    document.addEventListener('keydown', exitOnEscInnerListener)
-};
 // Слушатель отправки формы создания новой карточки
 popupAddCard.addEventListener('submit', formAddCardSubmit);

@@ -9,16 +9,14 @@ class Card {
     // Создаём карточку
     _getCardElement() { 
         const cardElement = document.querySelector(this._templateSelector).content.cloneNode(true).children[0];
+        const elementImage = cardElement.querySelector('.element__image');
+
         cardElement.querySelector('.element__title').innerText = this._name;
-        cardElement.querySelector('.element__image').alt = this._name;
-        cardElement.querySelector('.element__image').src = this._link;
+        elementImage.alt = this._name;
+        elementImage.src = this._link;
         return cardElement;
     }
-    // Добавляем в карточку в DOM
-    _renderCards() {
-        document.querySelector('.elements').prepend(this._element);
-    }
-
+    
     // Лайки
     _likeIt() {
         this._element.querySelector('.element__like').classList.toggle('element_like-active');
@@ -27,13 +25,17 @@ class Card {
     // Удаляем карточку
     _removeCard() {
         this._element.remove();
+        // Затираем ссылку на DOM элемент - это поможет сборщику мусора очистить его из памяти
+        this._element = null;
     }
 
     // Открытие изображения
     _openPopupImage() {
         const popupImage = document.querySelector('.popup_image-block');
-        popupImage.querySelector('.popup__image').src = this._link;
-        popupImage.querySelector('.popup__image').alt = this._name;
+        const elementImage = popupImage.querySelector('.popup__image');
+
+        elementImage.src = this._link;
+        elementImage.alt = this._name;
         popupImage.querySelector('.popup__image-text').textContent = this._name;
         this._openPopup(popupImage);
 
@@ -49,8 +51,8 @@ class Card {
     // Кнопка "включения" класса
     getCard() {
         this._element = this._getCardElement();
-        this._renderCards();
         this._setListeners();
+        return this._element;
     }
 
 };

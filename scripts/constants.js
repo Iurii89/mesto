@@ -56,8 +56,12 @@ export const addCardPopupOpenButton = document.querySelector('.profile__add-butt
 export const addCardPopupcloseButton = document.querySelector('.popup__close-button_add-card'); 
 // Кнопка закрытия изображения
 export const popupImageCloseButton = document.querySelector('.popup__close-image-button');
-//попап с изображением
+// Кнопка "Создать" папа добавления карточки
+export const popupAddCardButtonSave = document.querySelector('.popup__save_add-card');
+// Попап с изображением
 export const popupImage = document.querySelector('.popup_image-block') 
+// Контейнер карточек
+export const cards = document.querySelector('.elements');
 // Валидация форм
 export const configValid = {
         formSelectorProfile: '.popup__form_edit-profile',
