@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="pages/index.css">
+    <!-- <link rel="stylesheet" href="pages/index.css"> -->
 </head>
 <body class="body">
     
@@ -46,9 +46,9 @@
                 <form action="#" class="popup__form popup__form_edit-profile" name="popup-form" novalidate>
                     <fieldset class="popup__form-main-container">
                         <h2 class="popup__title">Редактировать профиль</h2>
-                        <input type="text" class="popup__input" name="popup-form-name-profile" id="profile-input-name" minlength="2" maxlength="40" required>
+                        <input type="text" class="popup__input popup__input_name-profile" name="name" id="profile-input-name" minlength="2" maxlength="40" required>
                         <span class="popup__input-error" id="profile-input-name-error"></span>
-                        <input type="text" class="popup__input" name="popup-form-job-profile" id="prifile-input-job" minlength="2" maxlength="200" required>
+                        <input type="text" class="popup__input popup__input_job-profile" name="link" id="prifile-input-job" minlength="2" maxlength="200" required>
                         <span class="popup__input-error" id="prifile-input-job-error"></span>
                         <button class="popup__save" type="submit">Сохранить</button>
                     </fieldset>
@@ -63,9 +63,9 @@
                 <form action="#" class="popup__form popup__form_add-card" name="popup-form" novalidate>
                     <fieldset class="popup__form-main-container">
                         <h2 class="popup__title">Новое место</h2>
-                        <input type="text" placeholder="Название" class="popup__input popup__input_add-card" name="popup-form-name-add-card" id="add-card-input-name" minlength="2" maxlength="30" required>
+                        <input type="text" placeholder="Название" class="popup__input popup__input_add-card-name" name="name" id="add-card-input-name" minlength="2" maxlength="30" required>
                         <span class="popup__input-error" id="add-card-input-name-error"></span>
-                        <input type="url" placeholder="Ссылка на картинку" class="popup__input" name="popup-form-url-add-card" id="add-card-input-url" required>
+                        <input type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_add-card-url" name="link" id="add-card-input-url" required>
                         <span class="popup__input-error" id="add-card-input-url-error"></span>
                         <button class="popup__save popup__save_add-card" type="submit">Создать</button>
                     </fieldset>
@@ -76,7 +76,7 @@
         <!-- POPUP OPEN IMAGE -->
         <section class="popup popup_image-block">
             <div class="popup__container-image">
-                <img src="" alt="" class="popup__image">
+                <img src="#" alt="" class="popup__image">
                 <button class="popup__close-button popup__close-image-button" type="button"></button>
                 <p class="popup__image-text"></p>
             </div>
@@ -88,7 +88,7 @@
     <template class="template">
         <div class="element">
             <button class="element__delete" type="button"></button>
-            <img src="" alt="" class="element__image">
+            <img src="#" alt="" class="element__image">
             <div class="element__description">
                 <h2 class="element__title"></h2>
                 <button class="element__like" type="button"></button>
@@ -96,7 +96,7 @@
         </div>
     </template>
 
-    <script src="./scripts/index.js" type="module" defer></script>
+    <!-- <script src="./scripts/index.js" type="module" defer></script> -->
 
 </body>
 </html>
