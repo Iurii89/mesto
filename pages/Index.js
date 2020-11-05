@@ -8,19 +8,20 @@ import {
   popupOpenButton,
   addCardPopupOpenButton,
   configValid,
-} from "./constants.js";
-import Section from "./section.js";
-import Card from "./card.js";
-import FormValidator from "./formValidator.js";
-import PopupWitchImage from "./popupWithImage.js";
-import PopupWithForm from "./popupWithForm.js";
-import UserInfo from "./userInfo.js";
+} from "../utils/constants.js";
+import Section from "../components/section.js";
+import Card from "../components/card.js";
+import FormValidator from "../components/formValidator.js";
+import PopupWithImage from "../components/popupWithImage.js";
+import PopupWithForm from "../components/popupWithForm.js";
+import UserInfo from "../components/userInfo.js";
 
 // Открытие картинки
-const popupWitchImageGoog = new PopupWitchImage(".popup_image-block");
+const popupWithImageGoog = new PopupWithImage(".popup_image-block");
+popupWithImageGoog.setEventListeners();
+
 const openImagePopup = (name, link) => {
-  popupWitchImageGoog.open(name, link);
-  popupWitchImageGoog.setEventListeners();
+  popupWithImageGoog.open(name, link);
 };
 
 // Редактирование профиля
@@ -37,22 +38,26 @@ const editFormPopup = new PopupWithForm({
 editFormPopup.setEventListeners();
 
 function editProfile() {
-  nameInput.value = userProfile.getUserInfo().name;
-  jobInput.value = userProfile.getUserInfo().job;
+  const getUserInfo = userProfile.getUserInfo();
+  nameInput.value = getUserInfo.name;
+  jobInput.value = getUserInfo.job;
 
   editFormPopup.open();
 }
 
 
 // Добавление карточки
+function newCard(formValues) {
+  const addCardNew = new Card(formValues, ".template", openImagePopup);
+  return addCardNew.getCard();
+};
+
 const addFormPopup = new PopupWithForm({
   popupSelector: ".popup_add-card",
 
   formSubmitHandler: (formValues) => {
-    const addCardNew = new Card(formValues, ".template", openImagePopup);
+    cardDefault.addItem(newCard(formValues));
 
-    const cardElement = addCardNew.getCard();
-    cardDefault.addItem(cardElement);
     addFormPopup.close();
   },
 });
@@ -91,18 +96,10 @@ const formAddCardValidator = new FormValidator(
 );
 formAddCardValidator.enableValidation();
 
-// Отключение кнопки "Создать" попапа добавления новой карточки
-const disablePopupAddCardButtonSave = () => {
-  popupAddCardButtonSave.classList.add(configValid.inactiveButtonClass);
-  popupAddCardButtonSave.setAttribute("disabled", true);
-};
-
-
-
 // Слушатель открытия попапа редактирования профиля
 popupOpenButton.addEventListener("click", editProfile);
 // Слушатель открытия попапа добавления карточек
 addCardPopupOpenButton.addEventListener("click", () => {
   addFormPopup.open();
-  disablePopupAddCardButtonSave();
+  formAddCardValidator.disablePopupAddCardButtonSave();
 });

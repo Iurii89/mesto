@@ -6,6 +6,7 @@ class FormValidator {
     this._submitButtonSelector = configValid.submitButtonSelector;
     this._inactiveButtonClass = configValid.inactiveButtonClass;
     this._errorClass = configValid.errorClass;
+    this._formElement = document.querySelector(this._formSelector);
   }
 
   // Показать ошибку
@@ -72,6 +73,11 @@ class FormValidator {
       });
     });
     this._toggleButton(inputList, buttonElement);
+  }
+
+  disablePopupAddCardButtonSave() {
+    this._formElement.querySelector(this._submitButtonSelector).classList.add(this._inactiveButtonClass);
+    this._formElement.querySelector(this._submitButtonSelector).setAttribute("disabled", true);
   }
 
   // Кнопка "включения" класса
