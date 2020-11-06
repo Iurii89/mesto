@@ -69,9 +69,9 @@ const cardDefault = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const visualizeElement = new Card(item, ".template", openImagePopup);
+      const newCard = new Card(item, ".template", openImagePopup);
 
-      const cardElement = visualizeElement.getCard();
+      const cardElement = newCard.getCard();
 
       cardDefault.addItem(cardElement);
     },

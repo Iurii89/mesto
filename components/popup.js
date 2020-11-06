@@ -5,9 +5,6 @@ class Popup {
     this._handleEscClose = this._handleEscClose.bind(this);
     this._closePopupByOverlay = this._closePopupByOverlay.bind(this);
     this._popupOpened = document.querySelector(".popup_is-opened");
-    this._popupForm = this._popupElement.querySelector(".popup__form");
-    this._popupImageSelectorTitle = this._popupElement.querySelector(".popup__image-text");
-    this._popupImageSelectorSrc = this._popupElement.querySelector(".popup__image");
   }
 
   open() {
