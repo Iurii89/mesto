@@ -1,13 +1,12 @@
 class Section {
-  constructor({ items, renderer }, containerSelector) {
-    this._renderItems = items;
+  constructor({renderer}, containerSelector) {
     this._renderer = renderer;
 
     this._container = containerSelector;
   }
 
-  renderItems() {
-    this._renderItems.forEach((item) => this._renderer(item));
+  renderItems(arrServer) {
+    arrServer.forEach((item) => this._renderer(item));
   }
 
   addItem(nextElementContainer) {

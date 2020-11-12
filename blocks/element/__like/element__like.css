@@ -5,8 +5,11 @@
     background-color: transparent;
     background-size: contain;
     width: 21px;
-    height: 18px;
+    min-height: 18px;
     border: none;
+    margin: 0 0 3px;
+    padding: 0;
+    /* align-self: baseline; */
 }
 
 .element__like:hover {
@@ -18,13 +21,13 @@
 @media screen and (max-width: 950px) {
     .element__like {
         width: 2.21vw;
-        height: 1.9vw;
+        min-height: 1.9vw;
     }
 }
 
 @media screen and (max-width: 550px) {
     .element__like {
         width: 6.56vw;
-        height: 5.625vw;
+        min-height: 5.625vw;
     }
 }
