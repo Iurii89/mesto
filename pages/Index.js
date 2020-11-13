@@ -138,11 +138,7 @@ function likeIt(cardLike, cardLikeElement) {
   api.getCards().then((arr) => {
     arr.forEach((itemArr) => {
       if (cardLike._id === itemArr._id) {
-        if (
-          itemArr["likes"].some(function (itemLikes) {
-            return itemLikes._id === "d1ee0a6ceff5b4d0477c73bc";
-          })
-        ) {
+        if (itemArr.likes.some((i) => i._id === myLikeId)) {
           api.deleteLike(itemArr._id);
           likeElement.classList.remove("element_like-active");
           likeCounter.innerText--;
