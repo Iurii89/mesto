@@ -1,7 +1,7 @@
 import { data } from "autoprefixer";
 
 class Card {
-  constructor(data, templateSelector, openImagePopup, deleteFormPopup, likeIt) {
+  constructor(data, templateSelector, openImagePopup, deleteFormPopup, likeIt, myLikeId) {
     this._card = data;
     this._name = data.name;
     this._link = data.link;
@@ -12,6 +12,7 @@ class Card {
     this._deleteFormPopup = deleteFormPopup;
     this._templateElement = document.querySelector(this._templateSelector);
     this._likeIt = likeIt;
+    this._myLikeId = myLikeId;
   }
 
   // Создаём карточку
@@ -25,7 +26,7 @@ class Card {
 
     cardElement.querySelector(".element__title").innerText = this._name;
 
-    if(this._card['likes'].some(function(itemLikes) {return itemLikes._id === "d1ee0a6ceff5b4d0477c73bc"})){
+    if(this._card.likes.some((i) => i._id === this._myLikeId)){
       likeImage.classList.add('element_like-active');
     };
 
@@ -36,7 +37,7 @@ class Card {
   }
 
 
-  // Слушатерли: удаления/лайки/открытия изображения
+  // Слушатели: удаления/лайки/открытия изображения
   _setListeners() {
     this._element
       .querySelector(".element__delete")
@@ -55,7 +56,7 @@ class Card {
   getCard() {
     this._element = this._getCardElement();
     this._setListeners();
-    if (this._id !== "d1ee0a6ceff5b4d0477c73bc") {
+    if (this._id !== this._myLikeId) {
       this._element.querySelector('.element__delete').remove();
     };
     return this._element;

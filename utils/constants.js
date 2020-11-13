@@ -23,3 +23,4 @@ export const configValid = {
 };
 export const avatarButton = document.querySelector('.profile__avatar-container');
 export const avatarImg = document.querySelector('.profile__avatar');
+export const myLikeId = "d1ee0a6ceff5b4d0477c73bc";
